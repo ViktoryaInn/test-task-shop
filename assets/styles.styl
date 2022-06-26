@@ -1,0 +1,36 @@
+*
+  box-sizing border-box
+
+body
+  margin 0
+  font-family 'Source Sans Pro' !important
+
+$medias ?= {
+    xxs: '(max-width: 425px)',
+    xs: '(min-width: 426px)',
+    sm: '(min-width: 576px)',
+    md: '(min-width: 768px)',
+    lg: '(min-width: 992px)',
+    xl: '(min-width: 1200px)',
+    xxl: '(min-width: 1400px)'
+  }
+
+.row
+  display flex
+  flex-flow row wrap
+  margin -8px
+  & .col
+    flex 1 0 0
+    for size in (1..12)
+      &-{size}
+        padding 8px
+        flex 0 0 auto
+        width (100 / 12 * size)%
+
+  for $res, $query in $medias
+    @media $query
+      for size in (1..12)
+        & .col-{$res}-{size}
+          padding 8px
+          flex 0 0 auto
+          width (100 / 12 * size)%

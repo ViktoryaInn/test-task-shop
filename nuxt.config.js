@@ -21,7 +21,7 @@ export default {
 
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
-    '~assets/CSS/main.css'
+    './assets/styles.styl', '~/assets/vars.styl'
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
@@ -34,20 +34,24 @@ export default {
   // Modules for dev and build (recommended): https://go.nuxtjs.dev/config-modules
   buildModules: [
     // https://go.nuxtjs.dev/eslint
-    '@nuxtjs/eslint-module',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/eslint-module'
   ],
-
-  styleResources: {
-    scss: [
-      '~assets/SCSS/mixins.scss',
-      '~assets/SCSS/vars.scss'
-    ]
-  },
 
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
+    'nuxt-webfontloader',
+    '@nuxtjs/style-resources'
   ],
+
+  webfontloader: {
+    google: {
+      families: ['Source+Sans+Pro:400,600&display=swap&subset=cyrillic']
+    }
+  },
+
+  styleResources: {
+    stylus: ['./assets/stylus-vars.styl', './assets/mixins.styl']
+  },
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
