@@ -2,23 +2,24 @@
   <div>
     <form class="form">
       <div class="form-item">
-        <input id="productName" class="form-item__input required" placeholder="Введите наименование товара" required>
-        <label class="form-item__label" for="productName">Наименование товара</label>
+        <input id="name" v-model="model.name" class="form-item__input required" placeholder="Введите наименование товара" required>
+        <label class="form-item__label" for="name">Наименование товара</label>
       </div>
       <div class="form-item">
-        <textarea id="productDescription" class="form-item__input" placeholder="Введите описание товара" />
-        <label class="form-item__label" for="productDescription">Описание товара</label>
+        <textarea id="description" v-model="model.description" class="form-item__input" placeholder="Введите описание товара" />
+        <label class="form-item__label" for="description">Описание товара</label>
       </div>
       <div class="form-item">
-        <input id="productImage" class="form-item__input required" placeholder="Введите ссылку" required>
-        <label class="form-item__label" for="productImage">Ссылка на изображение товара</label>
+        <input id="imgUrl" v-model="model.imgUrl" class="form-item__input required" placeholder="Введите ссылку" required>
+        <label class="form-item__label" for="imgUrl">Ссылка на изображение товара</label>
       </div>
       <div class="form-item">
-        <input id="productPrice" class="form-item__input required" placeholder="Введите цену" required>
-        <label class="form-item__label" for="productPrice">Цена товара</label>
+        <input-number id="price" v-model="model.price" class="form-item__input required" required />
+        <label class="form-item__label" for="price">Цена товара</label>
       </div>
+
       <div class="form-item">
-        <button type="submit" :class="['submit-btn', isValid ? '--enabled' : '--disabled']">
+        <button type="button" :class="['submit-btn', isValid ? '--enabled' : '--disabled']" @click="addProduct()">
           Добавить товар
         </button>
       </div>
@@ -27,11 +28,28 @@
 </template>
 
 <script>
+import Product from '~/models/Product'
+import InputNumber from '~/components/InputNumber'
+
 export default {
   name: 'ProductForm',
+  components: { InputNumber },
+  data () {
+    return {
+      model: new Product({})
+    }
+  },
   computed: {
     isValid () {
-      return true
+      return this.model.name && this.model.imgUrl && this.model.price
+    }
+  },
+  methods: {
+    addProduct () {
+      if (this.isValid) {
+        this.$store.dispatch('addProduct', this.model)
+        this.model = new Product({})
+      }
     }
   }
 }
@@ -70,7 +88,8 @@ export default {
       transition box-shadow 0.5s
       &::placeholder
         color var(--input-placeholder-color)
-
+      &:invalid
+        border 1px solid var(--negative-color)
       &:hover
         box-shadow 0 2px 15px rgba(0,0,0,0.1)
       &:focus
