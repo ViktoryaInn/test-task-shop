@@ -1,5 +1,7 @@
 # test-task-shop
 
+Node version 14.17.0
+
 ## Build Setup
 
 ```bash
