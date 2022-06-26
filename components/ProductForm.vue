@@ -2,23 +2,23 @@
   <div>
     <form class="form">
       <div class="form-item">
-        <input id="productName" class="form-item__input required">
+        <input id="productName" class="form-item__input required" placeholder="Введите наименование товара" required>
         <label class="form-item__label" for="productName">Наименование товара</label>
       </div>
       <div class="form-item">
-        <textarea id="productDescription" class="form-item__input" />
+        <textarea id="productDescription" class="form-item__input" placeholder="Введите описание товара" />
         <label class="form-item__label" for="productDescription">Описание товара</label>
       </div>
       <div class="form-item">
-        <input id="productImage" class="form-item__input required">
+        <input id="productImage" class="form-item__input required" placeholder="Введите ссылку" required>
         <label class="form-item__label" for="productImage">Ссылка на изображение товара</label>
       </div>
       <div class="form-item">
-        <input id="productPrice" class="form-item__input required">
+        <input id="productPrice" class="form-item__input required" placeholder="Введите цену" required>
         <label class="form-item__label" for="productPrice">Цена товара</label>
       </div>
       <div class="form-item">
-        <button type="button" class="submit-btn --disabled">
+        <button type="submit" :class="['submit-btn', isValid ? '--enabled' : '--disabled']">
           Добавить товар
         </button>
       </div>
@@ -28,7 +28,12 @@
 
 <script>
 export default {
-  name: 'ProductForm'
+  name: 'ProductForm',
+  computed: {
+    isValid () {
+      return false
+    }
+  }
 }
 </script>
 
@@ -53,6 +58,7 @@ export default {
     &__input
       width 100%
       height var(--controls-height)
+      padding 10px 16px
       border none
       border-radius 4px
       background-color #FFFFFF
@@ -98,5 +104,6 @@ export default {
 
 textarea.form-item__input
   height 108px
+  padding 10px 16px
   resize none
 </style>

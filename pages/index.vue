@@ -18,7 +18,7 @@
     </div>
     <div class="content-body">
       <div class="row">
-        <div class="col-12 col-xl-3">
+        <div class="col-12 col-sm-6 col-lg-4 col-xl-3">
           <product-form />
         </div>
         <div class="col-12 col-xl-9">
@@ -60,6 +60,7 @@ export default {
 <style lang="stylus">
 h2
   margin 0
+  margin-bottom 8px
   font-size 28px
   color var(--txt-color)
 
@@ -71,9 +72,6 @@ h2
     padding 32px 32px 0
   &-header
     margin-bottom 16px
-    display flex
-    justify-content space-between
-    align-items center
 
 .select
   min-width 120px
@@ -87,9 +85,6 @@ h2
   font-weight 400
   font-size var(--control-fs)
   color var(--txt-select-color)
-  -moz-appearance none /* Firefox */
-  -webkit-appearance none /* Safari and Chrome */
-  appearance none
   &-wrapper
     width fit-content
     &::after
@@ -106,4 +101,13 @@ h2
       bottom 2px
   &__option
     height var(--controls-height)
+
+@media(min-width: 576px)
+  h2
+    margin-bottom 0
+
+  .content-header
+    display flex
+    justify-content space-between
+    align-items center
 </style>
