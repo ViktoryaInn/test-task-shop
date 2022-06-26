@@ -99,8 +99,10 @@ h2
       position relative
       right 16px
       bottom 2px
-  &__option
-    height var(--controls-height)
+  &:hover
+    box-shadow 0 2px 15px rgba(0,0,0,0.1)
+  &:active
+    box-shadow 0 2px 15px rgba(0,0,0,0.1)
 
 @media(min-width: 576px)
   h2

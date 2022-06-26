@@ -35,7 +35,7 @@ export default {
 <style lang="stylus" scoped>
   .card
     width 100%
-    height 423px
+    min-height 423px
     background-color #FFFEFB
     border-radius 4px
     box-shadow 0 20px 30px rgba(0, 0, 0, 0.04), 0px 6px 10px rgba(0, 0, 0, 0.02)
@@ -90,6 +90,11 @@ export default {
         top -8px
         right -8px
         transition opacity 0.3s
+        &:hover
+          background-color #ff6e6e
+        &:active
+          background-color #ff6e6e
+          box-shadow inset 0 0 15px rgba(217, 104, 104, 0.79)
       &:hover
         & .delete-btn
           visibility visible

@@ -31,7 +31,7 @@ export default {
   name: 'ProductForm',
   computed: {
     isValid () {
-      return false
+      return true
     }
   }
 }
@@ -67,8 +67,16 @@ export default {
       font-weight 400
       font-size var(--control-fs)
       color var(--txt-color)
+      transition box-shadow 0.5s
       &::placeholder
         color var(--input-placeholder-color)
+
+      &:hover
+        box-shadow 0 2px 15px rgba(0,0,0,0.1)
+      &:focus
+        box-shadow 0 2px 15px rgba(0,0,0,0.1)
+      &:active
+        box-shadow 0 2px 15px rgba(0,0,0,0.1)
 
       &.required + .form-item__label::after
         content ''
@@ -97,13 +105,32 @@ export default {
       &.--disabled
         background-color var(--button-color--disabled)
         color var(--txt-button-color--disabled)
+        transition color 0.5s, box-shadow 0.5s
+        &:hover
+          color #8f8f8f
+          box-shadow 0 2px 4px rgba(0,0,0,0.2)
+        &:active
+          box-shadow 0 0 2px rgba(0,0,0,0.3)
+          color #8f8f8f
 
       &.--enabled
         background-color var(--button-color--enabled)
         color var(--txt-button-color--enabled)
+        transition background-color 0.5s, box-shadow 0.5s
+        &:hover
+          box-shadow 0 2px 4px rgba(0,0,0,0.2)
+        &:active
+          background-color #6da166
+          box-shadow 0 0 2px rgba(0,0,0,0.3)
 
 textarea.form-item__input
   height 108px
   padding 10px 16px
   resize none
+  &:hover
+    box-shadow 0 2px 15px rgba(0,0,0,0.1)
+  &:focus
+    box-shadow 0 2px 15px rgba(0,0,0,0.1)
+  &:active
+    box-shadow 0 2px 15px rgba(0,0,0,0.1)
 </style>
